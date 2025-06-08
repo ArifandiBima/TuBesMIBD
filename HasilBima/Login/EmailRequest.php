@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <link rel="Stylesheet" href="loginStyles.css" />
+    <script src="LoginScript.php"></script>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -13,6 +14,7 @@
       <input type="email" placeholder="Enter your email" required /><br>
       <button type="submit">Submit</button>
     </form>
-  </div>
+  </div>  
+
 </body>
 </html>
