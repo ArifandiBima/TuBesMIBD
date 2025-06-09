@@ -15,12 +15,26 @@
         $realPass = (string)$row["pass"];
         
     } 
+    if ($realPass=="not real"&& !empty($_POST["pass"])) {
+      $channelId == "V". (string)rand();
+      $realPass == $_POST["pass"];
+      $myquery = "
+      Insert Into Kanal (idKanal, isGroup, pass)
+      VALUES('$channelId', 0, $realPass)";
+    
+      sqlsrv_query($conn, $myquery, array( $channelId ));
+      $myquery = "
+      Insert Into Pengguna
+      VALUES('$email, '$channelId')";
+    
+      sqlsrv_query($conn, $myquery, array( $channelId ));
+    }
     if (!empty($_POST["pass"]) && $realPass == $_POST["pass"]) {
         session_start();
         $_SESSION["channelId"] = $channelId;
         $_SESSION["gambarnya"] = $_POST["gambarnya"];
         $_SESSION["email"] = $_POST["email"];
-        header("Location: ../../devi/LandingPage.php");
+        header("Location: /devi/LandingPage.php");
     }
 ?>
 <!DOCTYPE html>
@@ -38,6 +52,8 @@
   <div class="form-container">
     <h1>Please enter your password</h1>
     <?php
+      if (empty($_POST["pass"]))
+        echo "<h1> making new Account <h1><br>";
       $imgPath = $_POST["gambarnya"];
       $channelName = $_POST["namaChannel"];
       if (!empty($_POST["pass"]))
@@ -56,7 +72,6 @@
     </form>
     <?php
     if(!empty($pass)){
-        if (isset(($_SESSION))) echo "amiaia";
         echo "<h1> Wrong Password</h1>";
     }
     ?>

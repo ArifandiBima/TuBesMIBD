@@ -21,7 +21,7 @@
 <body>
   <header>
     <div class="logo">
-      <a href="">
+      <a href="LandingPage.php">
         <img src="<?php echo $imgSrc ?>" alt="YouTube Logo"/>
       </a>
     </div>
@@ -32,11 +32,11 @@
       </a>
     </div>
     <div class="actions">
-      <a href="">
+      <a href="/HasilBima/Notif/NotifReject.php">
         <img src="notif-icon.png" alt="Notifications" />
       </a>
       <div class="profile-circle">
-        <a href="../HasilBima/Login/EmailRequest.php">A</a>
+        <a href="<?php if (isset($_SESSION)) echo "../HasilBima/Login/EmailRequest.php"; else echo "/Eric/Profile/Profile.php"?>">A</a>
       </div>
     </div>
   </header>
