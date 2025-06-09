@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <link rel="Stylesheet" href="loginStyles.css" />
-    <script src="LoginScript.php"></script>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,10 +8,9 @@
 </head>
 <body>
   <div class="form-container">
-    <h1>Please enter your email address</h1>
-    <form actions="/LoginScript.php" method="POST">
+    <h1>Please enter your email</h1>
+    <form action="ChannelChoiche.php" method="POST">
       <input name="email" type="email" placeholder="Enter your email" required /><br>
-      <input name="pass" type="password" placeholder="Enter password" required /><br>
       <button type="submit">Submit</button>
     </form>
   </div>  
