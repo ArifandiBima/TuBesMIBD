@@ -42,30 +42,23 @@
   </header>
 
   <main>
-    <div class="video">
-      <div class="thumbnail">
-        <a href="page1.html">
-          <img src="thumbnail1.webp" alt="Thumbnail 1" />
-        </a>
-      </div>
-      <div class="video-title">Title 1</div>
-    </div>
     <?php 
     $myquery = "
       SELECT TOP 3 idVideo, judul, thumbnail
       FROM Video
-      WHERE isPublished =1";
+      WHERE isPublished = 1
+      ORDER BY RAND()";
     
-    $stmt = sqlsrv_query($conn, $myquery, array( $channelId ));
+    $stmt = sqlsrv_query($conn, $myquery);
     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC) ) {
         $idVideo = $row["idVideo"];
         $thumb = $row["thumbnail"];
-        $title = $row["title"];
+        $title = $row["judul"];
         echo "<div class='video'>
         <div class='thumbnail'>
-        <a href= '../Eric/Video.html?$idVideo'>
-          <img src='$thumb'/>
-        </a>
+            <a href='../Eric/Video/Video.php?idVideo=$idVideo'>
+                <img src='$thumb' alt='Thumbnail'/>
+            </a>
         </div>
         <div class='video-title'>$title</div>
         </div>";

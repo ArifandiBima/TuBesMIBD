@@ -33,13 +33,13 @@ CREATE TABLE PosisiPenggunaGroup(
 
 CREATE TABLE Video (
     idVideo varchar(50) PRIMARY KEY,
-	thumbnail varchar(50),
     dscp varchar(500),
     judul varchar(30),
     waktu datetime,
 	isPublished INT,
 	uploader varchar(30) FOREIGN KEY REFERENCES Pengguna,
-	loc varchar(25) FOREIGN KEY REFERENCES Kanal
+	loc varchar(25) FOREIGN KEY REFERENCES Kanal,
+	thumbnail varchar(50)
 )
 
 CREATE TABLE Caption (
@@ -103,7 +103,7 @@ INSERT INTO PosisiPenggunaGroup VALUES
 
 -- Data untuk Tabel Video (userA unggah video ke ChannelA)
 INSERT INTO Video VALUES 
-('V001', null, 'Deskripsi video pertama', 'Judul Video A', '2025-06-01 10:00:00', 1, 'userA@example.com', 'K001');
+('/Eric/Video/video.html', 'Deskripsi video pertama', 'Judul Video A', '2025-06-01 10:00:00', 1, 'userA@example.com', 'K001', null);
 
 -- Data untuk Tabel Caption (userA unggah subtitle)
 INSERT INTO Caption VALUES 
