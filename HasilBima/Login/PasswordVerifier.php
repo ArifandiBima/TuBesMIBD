@@ -4,6 +4,7 @@
     $connectionInfo = array( "Database"=>"master");
     $conn = sqlsrv_connect( $serverName, $connectionInfo);
     $channelId = $_POST["idChannel"];
+    $realPass="not real";
     $myquery = "
       SELECT pass
       FROM Kanal
@@ -11,14 +12,15 @@
     
     $stmt = sqlsrv_query($conn, $myquery, array( $channelId ));
     if ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC) ) {
-        $realPass = $row["pass"];
+        $realPass = (string)$row["pass"];
+        
     } 
-    if ( $realPass == $_POST["pass"]) {
+    if (!empty($_POST["pass"]) && $realPass == $_POST["pass"]) {
         session_start();
         $_SESSION["channelId"] = $channelId;
         $_SESSION["gambarnya"] = $_POST["gambarnya"];
         $_SESSION["email"] = $_POST["email"];
-        echo "<script> window.Location = '../../devi/LandingPage.php'</script>";
+        header("Location: ../../devi/LandingPage.php");
     }
 ?>
 <!DOCTYPE html>
@@ -28,6 +30,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Subscribe</title>
+  <?php
+  
+  ?>
 </head>
 <body>
   <div class="form-container">
@@ -35,13 +40,14 @@
     <?php
       $imgPath = $_POST["gambarnya"];
       $channelName = $_POST["namaChannel"];
-      $pass = $_POST["pass"];
+      if (!empty($_POST["pass"]))
+        $pass = $_POST["pass"];
+      else $pass = '';
       echo "<img src='$imgPath'><br>";
       echo "<h1>$channelName</h1>";
-      echo "";
     ?>
     <form id="trial" action="PasswordVerifier.php" method="POST">
-      <input name="pass" type="password" placeholder="your password" required /><br>
+      <input name="pass" type="password" id='password' placeholder="your password" required /><br>
       <input type="hidden" name="email" id="email" value="<?php echo $_POST["email"]?>">
       <input type="hidden" name="idChannel" id="idChannel" value="<?php echo $channelId?>">
       <input type="hidden" name="namaChannel" id="namaChannel" value="<?php echo $channelName;?>">
@@ -50,6 +56,7 @@
     </form>
     <?php
     if(!empty($pass)){
+        if (isset(($_SESSION))) echo "amiaia";
         echo "<h1> Wrong Password</h1>";
     }
     ?>
