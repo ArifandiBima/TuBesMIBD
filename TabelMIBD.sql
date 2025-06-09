@@ -33,6 +33,7 @@ CREATE TABLE PosisiPenggunaGroup(
 
 CREATE TABLE Video (
     idVideo varchar(50) PRIMARY KEY,
+	thumbnail varchar(50),
     dscp varchar(500),
     judul varchar(30),
     waktu datetime,
@@ -73,9 +74,9 @@ CREATE TABLE Komentar(
 
 -- Data untuk Tabel Kanal
 INSERT INTO Kanal VALUES 
-('K001', 'ChannelA', 0, 0, 'gambar1.jpg', 'link1.com', 'Deskripsi A'),
-('K002', 'ChannelB', 0, 0, 'gambar2.jpg', 'link2.com', 'Deskripsi B'),
-('K003', 'ChannelC', 1, 1234, 'gambar3.jpg', 'link3.com', 'Group C');
+('K001', null, 'ChannelA', 0, 0, 'gambar1.jpg', 'link1.com', 'Deskripsi A'),
+('K002', null, 'ChannelB', 0, 0, 'gambar2.jpg', 'link2.com', 'Deskripsi B'),
+('K003', null, 'ChannelC', 1, 1234, 'gambar3.jpg', 'link3.com', 'Group C');
 
 -- Data untuk Tabel Pengguna
 INSERT INTO Pengguna VALUES 
