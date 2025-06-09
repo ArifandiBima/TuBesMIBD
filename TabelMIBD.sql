@@ -74,9 +74,9 @@ CREATE TABLE Komentar(
 
 -- Data untuk Tabel Kanal
 INSERT INTO Kanal VALUES 
-('K001', null, 'ChannelA', 0, 0, 'gambar1.jpg', 'link1.com', 'Deskripsi A'),
-('K002', null, 'ChannelB', 0, 0, 'gambar2.jpg', 'link2.com', 'Deskripsi B'),
-('K003', null, 'ChannelC', 1, 1234, 'gambar3.jpg', 'link3.com', 'Group C');
+('K001', 'ChannelA', 0, 0, 'gambar1.jpg', 'link1.com', 'Deskripsi A'),
+('K002', 'ChannelB', 0, 0, 'gambar2.jpg', 'link2.com', 'Deskripsi B'),
+('K003', 'ChannelC', 1, 1234, 'gambar3.jpg', 'link3.com', 'Group C');
 
 -- Data untuk Tabel Pengguna
 INSERT INTO Pengguna VALUES 
@@ -103,7 +103,7 @@ INSERT INTO PosisiPenggunaGroup VALUES
 
 -- Data untuk Tabel Video (userA unggah video ke ChannelA)
 INSERT INTO Video VALUES 
-('V001', 'Deskripsi video pertama', 'Judul Video A', '2025-06-01 10:00:00', 1, 'userA@example.com', 'K001');
+('V001', null, 'Deskripsi video pertama', 'Judul Video A', '2025-06-01 10:00:00', 1, 'userA@example.com', 'K001');
 
 -- Data untuk Tabel Caption (userA unggah subtitle)
 INSERT INTO Caption VALUES 
