@@ -10,7 +10,20 @@
       SELECT pass
       FROM Kanal
       WHERE idKanal = ?";
+    if ($realPass=="not real"&& !empty($_POST["pass"])) {
+      $channelId == "V". (string)rand();
+      $realPass == $_POST["pass"];
+      $myquery = "
+      Insert Into Kanal (idKanal, isGroup, pass)
+      VALUES('$channelId', 0, $realPass)";
     
+      sqlsrv_query($conn, $myquery);
+      $myquery = "
+      Insert Into Pengguna
+      VALUES('$email, '$channelId')";
+    
+      sqlsrv_query($conn, $myquery);
+    }
     $stmt = sqlsrv_query($conn, $myquery, array( $channelId ));
     if ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC) ) {
         $realPass = (string)$row["pass"];
