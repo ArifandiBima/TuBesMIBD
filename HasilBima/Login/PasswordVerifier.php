@@ -15,20 +15,7 @@
         $realPass = (string)$row["pass"];
         
     } 
-    if ($realPass=="not real"&& !empty($_POST["pass"])) {
-      $channelId == "V". (string)rand();
-      $realPass == $_POST["pass"];
-      $myquery = "
-      Insert Into Kanal (idKanal, isGroup, pass)
-      VALUES('$channelId', 0, $realPass)";
     
-      sqlsrv_query($conn, $myquery, array( $channelId ));
-      $myquery = "
-      Insert Into Pengguna
-      VALUES('$email, '$channelId')";
-    
-      sqlsrv_query($conn, $myquery, array( $channelId ));
-    }
     if (!empty($_POST["pass"]) && $realPass == $_POST["pass"]) {
         session_start();
         $_SESSION["channelId"] = $channelId;
