@@ -37,7 +37,7 @@
           $targetImg = $row['gambar'];
           $channelId = $row['idKanal'];
         } 
-        echo "<img src='$targetImg' id='$channelId' alt='User Image'><br>";
+        echo "<img src='/$targetImg' id='$channelId' alt='User Image'><br>";
       ?>
     </div>
     <div id="groupChannels">
@@ -56,7 +56,8 @@
           $imgPath = $row["gambar"];
           $channelId = $row["idKanal"];
           $channelName = $row["nama"];
-          echo "<div><img src='$imgPath' id='$channelId' alt='User Image'><br><h3>$channelName</h3></div>";
+          echo "<div><img src='/$imgPath' id='$channelId' alt='User Image'><br><h3>$channelName</h3></div>";
+          echo $imgPath;
         }
         sqlsrv_close($conn);
       ?>

@@ -103,7 +103,7 @@ INSERT INTO PosisiPenggunaGroup VALUES
 
 -- Data untuk Tabel Video (userA unggah video ke ChannelA)
 INSERT INTO Video VALUES 
-('/Eric/Video/video.html', 'Deskripsi video pertama', 'Judul Video A', '2025-06-01 10:00:00', 1, 'userA@example.com', 'K001', null);
+('/Eric/Video/video.html', 'Deskripsi video pertama', 'Judul Video A', '2025-	06-01 10:00:00', 1, 'userA@example.com', 'K001', null);
 
 -- Data untuk Tabel Caption (userA unggah subtitle)
 INSERT INTO Caption VALUES 

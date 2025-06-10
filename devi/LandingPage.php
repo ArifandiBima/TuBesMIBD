@@ -37,8 +37,10 @@
         <img src="/devi/notif-icon.png" alt="Notifications" />
       </a>
       <div class="profile-circle">
+        <a href="<?php if (!isset($_SESSION["email"])) echo "/HasilBima/Login/EmailRequest.php"; else echo "/Eric/Profile/Profile.php"?>">
+          <img src = "<?php echo $imgSrc?>">
+        </a>
         
-        <a href="<?php if (!isset($_SESSION["email"])) echo "/HasilBima/Login/EmailRequest.php"; else echo "/Eric/Profile/Profile.php"?>">A</a>
       </div>
     </div>
   </header>

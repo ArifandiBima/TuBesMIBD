@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const channelName = this.nextElementSibling?.textContent.trim();
         nameInput.value = channelName;
         idInput.value = this.id;
-        imageInput.value = this.src;   
+        imageInput.value = this.src;    
         form.submit(); // Submits with POST
       });
     });
