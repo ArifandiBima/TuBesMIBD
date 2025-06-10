@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  $serverName = "MEATJERKY\SQLEXPRESS"; //serverName\instanceName
+  $connectionInfo = array( "Database"=>"master");
+  $conn = sqlsrv_connect( $serverName, $connectionInfo);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,13 +41,28 @@
   <section class="channel-info">
     <img src="/Eric/Images/iseng.jpg" alt="Channel Avatar" />
     <div class="text">
-      <h2>Channel Name</h2>
-      <p>Ini channel saya</p>
-      <p>1.2M subscribers • 150 videos</p>
+      <?php
+      $myquery = "
+      SELECT nama, dscp
+      FROM Kanal
+      WHERE idKanal = ?";
+      $stmt = sqlsrv_query($conn, $myquery, array( $_SESSION["channelId"] ));
+      if ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC) ) {
+        $namaChannel = $row["nama"];
+        $desc = $row["dscp"];
+        echo "<h2>$namaChannel</h2>
+              <p>$desc</p>";
+      } 
+      ?>
+      
     </div>
   </section>
 
   <section class="channel-actions">
+    <a href="/index.php">
+
+      <button>logout</button>
+    </a>
   <button onclick="uploadProfilePicture()">Upload Profile Picture</button>
   <button onclick="changeDescription()">Change Description</button>
   <button onclick="uploadVideo()">Upload Video</button>
