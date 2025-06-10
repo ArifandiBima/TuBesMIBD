@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    $serverName = "MEATJERKY\SQLEXPRESS"; //serverName\instanceName
+    
+    $connectionInfo = array( "Database"=>"master");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    $imgSrc = "default.jpg";
+    if (isset($_SESSION)) {
+      $imgSrc = $_SESSION["gambarnya"];
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +21,7 @@
 <body>
 
 <header>
-    <div class="logo">
+    <div class="logo" href="/devi/LandingPage.php">
       <a href="">
         <img src="/devi/logo_youtube.png" alt="YouTube Logo" />
       </a>
@@ -35,8 +47,7 @@
     <div class="video-main">
       <div class="video-player">
         <video controls>
-          <source src="sample.mp4" type="video/mp4">
-          Your browser does not support HTML5 video.
+          <source src="<?php $_GET("idVideo")?>" type="video/mp4">
         </video>
       </div>
 
@@ -72,21 +83,8 @@
         </div>
       </div>
 
-      <div class="suggested-video">
-        <img src="https://via.placeholder.com/160x90" alt="Thumbnail" />
-        <div>
-          <p class="title">JavaScript Crash Course</p>
-          <p class="views">120K views</p>
-        </div>
-      </div>
-
-      <div class="suggested-video">
-        <img src="https://via.placeholder.com/160x90" alt="Thumbnail" />
-        <div>
-          <p class="title">Build a Portfolio Website</p>
-          <p class="views">95K views</p>
-        </div>
-      </div>
+      <?php
+      ?>
 
     </aside>
   </main>

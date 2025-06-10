@@ -1,10 +1,11 @@
 <?php
+    session_start();
     $serverName = "MEATJERKY\SQLEXPRESS"; //serverName\instanceName
     
     $connectionInfo = array( "Database"=>"master");
     $conn = sqlsrv_connect( $serverName, $connectionInfo);
     $imgSrc = "default.jpg";
-    if (isset($_SESSION)) {
+    if (isset($_SESSION["gambarnya"])) {
       $imgSrc = $_SESSION["gambarnya"];
     }
 ?>
@@ -22,7 +23,7 @@
   <header>
     <div class="logo">
       <a href="LandingPage.php">
-        <img src="<?php echo $imgSrc ?>" alt="YouTube Logo"/>
+        <img src="logo_youtube.png" alt="YouTube Logo"/>
       </a>
     </div>
     <div class="search-bar">
@@ -36,7 +37,8 @@
         <img src="notif-icon.png" alt="Notifications" />
       </a>
       <div class="profile-circle">
-        <a href="<?php if (isset($_SESSION)) echo "../HasilBima/Login/EmailRequest.php"; else echo "/Eric/Profile/Profile.php"?>">A</a>
+        
+        <a href="<?php if (!isset($_SESSION["email"])) echo "../HasilBima/Login/EmailRequest.php"; else echo "/Eric/Profile/Profile.php"?>">A</a>
       </div>
     </div>
   </header>

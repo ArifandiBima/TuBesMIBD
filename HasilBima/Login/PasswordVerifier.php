@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $serverName = "MEATJERKY\SQLEXPRESS"; //serverName\instanceName
     
     $connectionInfo = array( "Database"=>"master");
@@ -17,11 +18,11 @@
     } 
     
     if (!empty($_POST["pass"]) && $realPass == $_POST["pass"]) {
-        session_start();
         $_SESSION["channelId"] = $channelId;
         $_SESSION["gambarnya"] = $_POST["gambarnya"];
         $_SESSION["email"] = $_POST["email"];
         header("Location: /devi/LandingPage.php");
+        exit();
     }
 ?>
 <!DOCTYPE html>
