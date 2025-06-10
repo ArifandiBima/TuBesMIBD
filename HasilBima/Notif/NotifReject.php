@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <link rel="Stylesheet" href="loginStyles.css" />
@@ -12,7 +15,7 @@
 <body>
   
     <?php
-        if (!isset($_Session)){
+        if (!isset($_SESSION["email"])){
             echo "<h1'> please login first</h1>";
         }
         else{
